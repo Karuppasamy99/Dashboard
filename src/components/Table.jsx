@@ -5,7 +5,7 @@ const Table = ({data}) => {
   // const searchName = data
   return (
     <div>
-      <table className="w-full">
+      <table className="w-full p-2 m-2">
         <thead>
           <tr className="p-2 m-2 bg-cyan-100">
             <td>Action</td>
@@ -21,7 +21,7 @@ const Table = ({data}) => {
         </thead>
         <tbody>
         {data && data.map( item => 
-        <tr className="bg-slate-100 h-8 py-4 my-2" key={item.id}>
+        <tr className="bg-slate-100" key={item.id}>
           <td>{item.actions}</td>
           <td>{item.requestNumber}</td>
           <td>{item.status}</td>

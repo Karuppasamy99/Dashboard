@@ -3,9 +3,11 @@ import downloadIcon from '../assets/images/downloadIcon.png'
 import { useState } from 'react'
 import { data } from '../assets/data';
 import Table from './Table';
+import Ticketraise from './TicketRaise';
 
 const ButtonList = () => {
   const [searchName, setSearchName] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const filterSearch = data.filter( item => item.assignedTo.toLowerCase().includes(searchName.toLowerCase()))
   
 
@@ -14,7 +16,7 @@ const ButtonList = () => {
   return (
     <>
     <div className='grid grid-flow-col mt-10'>
-      <button className='col-span-1 py-1 px-2 rounded-lg bg-cyan-300 m-2'>Raise new ticket</button>
+      <button onClick={()=> setShowModal(true)} className='col-span-1 py-1 px-2 rounded-lg bg-cyan-300 m-2'>Raise new ticket</button>
       <button className='col-span-1 py-1 px-2 rounded-lg bg-cyan-300 m-2'>My request</button>
       <div className='w-[800px]'>
      
@@ -32,6 +34,7 @@ const ButtonList = () => {
       
     </div>
     <Table data={filterSearch} />
+    { showModal && <Ticketraise showModal={setShowModal} /> } 
     </>
   )
 }
