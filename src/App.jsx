@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard'
 import TableContent from './components/TableContent'
 import Login from './components/Login'
 import MainContainer from './components/MainContainer'
+import UserContext from './utils/UserContext'
+import { useState } from 'react'
 
 
 const appRouter = createBrowserRouter([
@@ -32,11 +34,17 @@ const appRouter = createBrowserRouter([
 
 function App() {
   
+  const [userInfo, setUserInfo] = useState( {
+    userName: 'kannan',
+    email: 'kannan@gmail.com',
+  })
 
   return (
+    <UserContext.Provider value={{userInfo, setUserInfo }}>
     <> 
      <RouterProvider router={appRouter} />
     </>
+    </UserContext.Provider>
   )
 }
 

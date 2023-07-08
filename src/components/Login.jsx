@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+import { Link } from "react-router-dom";
+
 const Login = () => {
+  const {userInfo, setUserInfo} = useContext(UserContext)
+  console.log(userInfo)
     return (
       <div className="flex flex-row h-screen inset-0">
         <div className="w-1/2 my-0 mx-auto bg-slate-100">
@@ -17,11 +23,11 @@ const Login = () => {
           {/* Login Form */}
           <div className="m-4">
             <h2 className="font-bold text-xl p-2">Login</h2>
-            <form action="/dashboard">
-              <input className="block m-2 p-2 rounded-lg" type="text" placeholder="Username" />
-              <input className="block m-2 p-2 rounded-lg" type="password" placeholder="Password" />
-              <button className="block m-2 p-2 rounded-lg bg-cyan-300" type="submit">Login</button>
-            </form>
+            
+              <input className="block m-2 p-2 rounded-lg" value={userInfo.userName} type="text" onChange={(e)=>setUserInfo({...userInfo, userName: e.target.value})} placeholder="Username" />
+              <input className="block m-2 p-2 rounded-lg" value={userInfo.email} type="password" onChange={(e)=>setUserInfo({...userInfo, email: e.target.value})} placeholder="Email" />
+              <Link to={'/dashboard'}><input className="block m-2 p-2 rounded-lg bg-cyan-300 cursor-pointer text-center" value="Submit" readOnly/></Link>
+           
           </div>
           {/* Footer */}
           </div>
